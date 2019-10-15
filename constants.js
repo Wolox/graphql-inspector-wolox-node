@@ -4,5 +4,3 @@ module.exports = {
   oldSchemaArgIndex: 2,
   newSchemaArgIndex: 3
  };
- 
- 
