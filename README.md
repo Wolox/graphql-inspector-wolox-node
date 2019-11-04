@@ -12,7 +12,9 @@ At last, if no breaking changes are found, it replace the old schema with the ne
 Install with `npm install graphql-inspector-wolox-node`.
 
 ## Usage
-It must be called with: `graphql-inspector-wolox-node [OPTION] <oldSchemaPath> <newSchemaPath>`.
+It must be called with one of the following commands: 
+  * `graphql-inspector-wolox-node [OPTION] -o <oldSchemaPath> -n <newSchemaPath>`.
+  * `graphql-inspector-wolox-node [OPTION] --old-schema=<oldSchemaPath> -new-schema=<newSchemaPath>`.
 
 ### Supported extensions: 
 * oldSchemaPath:
@@ -23,7 +25,7 @@ It must be called with: `graphql-inspector-wolox-node [OPTION] <oldSchemaPath> <
 
 ### Options
 * `--ignore-breaking`: It will bypass breaking changes.
-* `--ignore-old-schema`: If no old schema is found, it will create the new schema file with all the new changes. 
+* `--ignore-old-schema`: If `oldSchemaPath` is not a valid file or it doesn't exists, it will create the new schema file with all the new changes in that path. 
 
 
 ## Local running
