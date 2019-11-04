@@ -26,8 +26,14 @@ Supported extensions:
 Since the package has graphql as peer dependence, if the package is not installed with `npm install graphql-inspector-wolox-node`, the next steps are required:
 
 1. Download the package
-2. Run npm install in the package's folder.
-3. From `node_modules/graphql-inspector-wolox-node` run `npm link graphql`
+2. In the package folder:
+    * `npm install`
+    * `npm link`
+3. In your project folder:
+    * `npm link graphql-inspector-wolox-node`
+    * In `/node_modules/graphql-inspector-wolox-node` run `npm link graphql` to install peer dependece.
+4. Call the package with `graphql-inspector-wolox-node <oldSchemaPath> <newSchemaPath>`.
+
 
 ## Contributing
 
