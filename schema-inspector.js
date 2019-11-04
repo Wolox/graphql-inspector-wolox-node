@@ -1,46 +1,41 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 
-const { printSchema, buildSchema } = require('graphql');
-const { importSchema } = require('graphql-import');
-const { diff } = require('@graphql-inspector/core');
-const { success, warning, error, info } = require('log-symbols');
-const chalk = require('chalk');
 const fs = require('fs');
-const { status, argIndexes, categories } = require('./constants');
+const { logger } = require('express-wolox-logger');
+const { printSchema } = require('graphql');
+const { info } = require('log-symbols');
+const { args } = require('./helper/commandParser');
+const { mergeSchemas, getChangesInSchema, logChanges } = require('./helper/schemas');
+const { resolveInspection } = require('./resolvers/inspector');
+const {
+  status,
+  argsNames: { OLD_SCHEMA, NEW_SCHEMA, IGNORE_OLD_SCHEMA }
+} = require('./constants');
 
 const processcwd = process.cwd();
-const oldSchemaFile = `${processcwd}/${process.argv[argIndexes.OLD_SCHEMA_ARG_INDEX]}`;
-const { schema } = require(`${processcwd}/${process.argv[argIndexes.NEW_SCHEMA_ARG_INDEX]}`);
+const oldSchemaFile = `${processcwd}/${args[OLD_SCHEMA]}`;
+const { schema } = require(`${processcwd}/${args[NEW_SCHEMA]}`);
 const newSchema = printSchema(schema);
-const criticalitySymbols = { BREAKING: error, DANGEROUS: warning, NON_BREAKING: success };
-
-const resolveWithoutBreakingChanges = (schemaToWrite, schemaToRead) => {
-  console.log(success, chalk.green.bold('No breaking changes detected in schema'));
-  fs.writeFileSync(schemaToWrite, schemaToRead);
-};
-
-const resolveWithBreakingChanges = () => {
-  console.log(error, chalk.red('Breaking changes detected'));
-  process.exit(status.ERROR_EXIT_STATUS);
-};
 
 try {
-  if (fs.existsSync(oldSchemaFile)) {
-    console.log(info, 'Schema inspection:');
-    const changes = diff(buildSchema(importSchema(oldSchemaFile)), buildSchema(newSchema));
-    changes.forEach(change => {
-      console.log(criticalitySymbols[change.criticality.level], change.message);
-    });
-    if (changes.some(c => c.criticality.level === categories.BREAKING)) {
-      resolveWithBreakingChanges();
+  logger.info(info, 'Schema inspection:');
+
+  if (!fs.existsSync(oldSchemaFile)) {
+    logger.error('Old schema file not found');
+    if (args[IGNORE_OLD_SCHEMA]) {
+      logger.info('Ignoring old schema file');
+      mergeSchemas(oldSchemaFile, newSchema);
+      process.exit(status.NO_ERROR_EXIT_STATUS);
     } else {
-      resolveWithoutBreakingChanges(oldSchemaFile, newSchema);
+      process.exit(status.ERROR_EXIT_STATUS);
     }
-  } else {
-    resolveWithoutBreakingChanges(oldSchemaFile, newSchema);
   }
+
+  const changes = getChangesInSchema(oldSchemaFile, newSchema);
+  logChanges(changes);
+  resolveInspection(changes, oldSchemaFile, newSchema);
 } catch (err) {
-  console.log(err);
+  logger.error(err);
   process.exit(status.ERROR_EXIT_STATUS);
 }
