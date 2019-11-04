@@ -4,16 +4,26 @@
   "description": "",
   "main": "schema-inspector.js",
   "scripts": {
+    "eslint-check": "eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check",
+    "lint": "eslint \"**/*.js\" --ignore-pattern ./.eslintrc.js",
+    "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs eslint",
+    "lint-fix": "eslint \"**/*.js\" --fix --ignore-pattern ./.eslintrc.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Wolox",
   "license": "MIT",
   "dependencies": {
     "@graphql-inspector/core": "^1.26.0",
     "chalk": "^2.4.2",
+    "eslint": "^6.6.0",
+    "eslint-config-wolox": "^3.0.2",
+    "eslint-config-wolox-node": "^2.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
     "fs": "0.0.1-security",
     "graphql-import": "^0.7.1",
-    "log-symbols": "^3.0.0"
+    "log-symbols": "^3.0.0",
+    "prettier": "^1.18.2"
   },
   "bin": {
     "graphql-inspector-wolox-node": "schema-inspector.js"
