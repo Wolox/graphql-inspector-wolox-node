@@ -39,7 +39,9 @@ Since the package has graphql as peer dependence, if the package is not installe
 3. In your project folder:
     * `npm link graphql-inspector-wolox-node`
     * In `/node_modules/graphql-inspector-wolox-node` run `npm link graphql` to install peer dependece.
-4. Call the package with `graphql-inspector-wolox-node <oldSchemaPath> <newSchemaPath>`.
+4. Call the package with one of the following commands: 
+  * `graphql-inspector-wolox-node [OPTION] -o <oldSchemaPath> -n <newSchemaPath>`.
+  * `graphql-inspector-wolox-node [OPTION] --old-schema=<oldSchemaPath> -new-schema=<newSchemaPath>`.
 
 
 ## Contributing
