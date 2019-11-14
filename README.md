@@ -19,7 +19,6 @@ It must be called with one of the following commands:
 ### Supported extensions: 
 * oldSchemaPath:
   * .graphql
-  * .json
 * newSchemaPath:
   * .js file that exports a GraphQLType variable named schema.
 
