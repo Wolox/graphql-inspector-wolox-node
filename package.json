@@ -1,6 +1,6 @@
 {
   "name": "graphql-inspector-wolox-node",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "schema-inspector.js",
   "scripts": {
