@@ -1,6 +1,6 @@
 {
   "name": "graphql-inspector-wolox-node",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "schema-inspector.js",
   "scripts": {
@@ -12,6 +12,21 @@
   },
   "author": "Wolox",
   "license": "MIT",
+  "keywords": [
+    "graphql",
+    "inspector",
+    "schema",
+    "node",
+    "wolox"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Wolox/graphql-inspector-wolox-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Wolox/graphql-inspector-wolox-node/issues"
+  },
+  "homepage": "https://github.com/Wolox/graphql-inspector-wolox-node#readme",
   "dependencies": {
     "@graphql-inspector/core": "^1.26.0",
     "chalk": "^2.4.2",
