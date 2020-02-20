@@ -29,7 +29,7 @@
   "homepage": "https://github.com/Wolox/graphql-inspector-wolox-node#readme",
   "dependencies": {
     "@graphql-inspector/core": "^1.26.0",
-    "chalk": "^2.4.2",
+    "chalk": "^3.0.0",
     "eslint": "^6.6.0",
     "eslint-config-wolox": "^3.0.2",
     "eslint-config-wolox-node": "^2.2.0",
