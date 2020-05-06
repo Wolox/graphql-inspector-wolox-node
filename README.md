@@ -6,7 +6,7 @@ Simple schema inspector that uses `graphql-inspector` for comparing schemas look
 * DANGEROUS
 * BREAKING
 
-At last, if no breaking changes are found, it replace the old schema with the new schema.
+At last, if no breaking changes are found, it replaces the old schema with the new schema.
 
 ## Installing
 Install with `npm install graphql-inspector-wolox-node`.
