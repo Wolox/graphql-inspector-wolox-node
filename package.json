@@ -35,7 +35,7 @@
     "eslint-config-wolox-node": "^2.2.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
-    "express-wolox-logger": "^1.1.0",
+    "express-wolox-logger": "^4.0.1",
     "fs": "0.0.1-security",
     "graphql-import": "^0.7.1",
     "graphql-tools": "^4.0.6",
