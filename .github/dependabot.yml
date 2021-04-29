@@ -1,0 +1,35 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "14:00"
+  open-pull-requests-limit: 10
+  labels:
+  - chore
+  ignore:
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: "@graphql-inspector/core"
+    versions:
+    - 2.3.0
+    - 2.4.0
+  - dependency-name: graphql-tools
+    versions:
+    - 7.0.2
+    - 7.0.3
+  - dependency-name: eslint-plugin-prettier
+    versions:
+    - 3.3.1
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: chalk
+    versions:
+    - 4.1.0
+  - dependency-name: handlebars
+    versions:
+    - 4.7.6
