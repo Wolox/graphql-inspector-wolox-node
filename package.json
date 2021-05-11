@@ -38,7 +38,7 @@
     "express-wolox-logger": "^1.1.0",
     "fs": "0.0.1-security",
     "graphql-import": "^0.7.1",
-    "graphql-tools": "^4.0.6",
+    "graphql-tools": "^7.0.5",
     "jest": "^24.9.0",
     "log-symbols": "^3.0.0",
     "minimist": "^1.2.0",
