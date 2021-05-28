@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/Wolox/graphql-inspector-wolox-node#readme",
   "dependencies": {
-    "@graphql-inspector/core": "^1.26.0",
+    "@graphql-inspector/core": "^2.6.1",
     "chalk": "^2.4.2",
     "eslint": "^6.6.0",
     "eslint-config-wolox": "^3.0.2",
